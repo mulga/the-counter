@@ -1,14 +1,27 @@
 const count = document.querySelector(".count");
-const sub = document.querySelector(".subtract");
-const resetButton = document.querySelector(".reset");
-const add = document.querySelector(".add");
+const buttons = document.querySelector(".buttons");
 
-function counter() {
-  count.innerHTML++;
-}
-function counterMinus() {
-  count.innerHTML--;
-}
-function reset() {
-  count.innerHTML = 0;
+buttons.addEventListener("click", (e) => {
+  if (e.target.classList.contains("add")) {
+    count.innerHTML++;
+    setColor();
+  }
+  if (e.target.classList.contains("subtract")) {
+    count.innerHTML--;
+    setColor();
+  }
+  if (e.target.classList.contains("reset")) {
+    count.innerHTML = 0;
+    setColor();
+  }
+});
+
+function setColor() {
+  if (count.innerHTML > 0) {
+    count.style.color = "#2ecc71";
+  } else if (count.innerHTML < 0) {
+    count.style.color = "#e74c3c";
+  } else {
+    count.style.color = "#fff";
+  }
 }
